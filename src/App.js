@@ -9,12 +9,6 @@ import User from "./components/User/User";
 import Particles from 'react-particles-js';
 import './App.css';
 
-import Clarifai from 'clarifai';
-
-const app = new Clarifai.App({
-    apiKey: "2c48e9078ded4426a89795af30e20197"
-});
-
 var particlesOptions = {
     particles: {
         value: 50,
@@ -49,7 +43,7 @@ function App() {
         if (route === 'home') {
             setisSignedIn(true);
         } else if (route === 'signout') {
-            setisSignedIn(false);
+            initialState();
         }
         setRoute(route);
     }
@@ -61,7 +55,12 @@ function App() {
     }
     var onPictureSubmit = () => {
         setUrl(input);
-        app.models.predict(Clarifai.FACE_DETECT_MODEL, input)
+        fetch('http://localhost:3001/imageurl', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ input })
+        })
+            .then(response => response.json())
             .then(response => {
                 if (response) {
                     fetch('http://localhost:3001/image', {
@@ -71,6 +70,7 @@ function App() {
                     })
                         .then(response => response.json())
                         .then(count => setUser({ ...user, entries: count }))
+                        .catch(console.log)
                 }
                 setBox(calculateBox(response))
             })
@@ -88,6 +88,20 @@ function App() {
             bottomRow: height - (bottom_row * height),
             rightCol: width - (right_col * width)
         }
+    }
+    var initialState = () => {
+        setInput('');
+        setUrl('');
+        setBox({});
+        setRoute('signin');
+        setisSignedIn(false);
+        setUser({
+            id: 125,
+            name: '',
+            email: '',
+            entries: 0,
+            joined: ''
+        })
     }
 
     return (

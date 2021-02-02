@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/s-e1/face-detector/static/css/main.11f5540b.chunk.css",
+    "main.js": "/s-e1/face-detector/static/js/main.86842d00.chunk.js",
+    "main.js.map": "/s-e1/face-detector/static/js/main.86842d00.chunk.js.map",
+    "runtime-main.js": "/s-e1/face-detector/static/js/runtime-main.6be3f5f6.js",
+    "runtime-main.js.map": "/s-e1/face-detector/static/js/runtime-main.6be3f5f6.js.map",
+    "static/css/2.31461e4f.chunk.css": "/s-e1/face-detector/static/css/2.31461e4f.chunk.css",
+    "static/js/2.923f0eb1.chunk.js": "/s-e1/face-detector/static/js/2.923f0eb1.chunk.js",
+    "static/js/2.923f0eb1.chunk.js.map": "/s-e1/face-detector/static/js/2.923f0eb1.chunk.js.map",
+    "static/js/3.ebe67b81.chunk.js": "/s-e1/face-detector/static/js/3.ebe67b81.chunk.js",
+    "static/js/3.ebe67b81.chunk.js.map": "/s-e1/face-detector/static/js/3.ebe67b81.chunk.js.map",
+    "index.html": "/s-e1/face-detector/index.html",
+    "static/css/2.31461e4f.chunk.css.map": "/s-e1/face-detector/static/css/2.31461e4f.chunk.css.map",
+    "static/css/main.11f5540b.chunk.css.map": "/s-e1/face-detector/static/css/main.11f5540b.chunk.css.map",
+    "static/js/2.923f0eb1.chunk.js.LICENSE.txt": "/s-e1/face-detector/static/js/2.923f0eb1.chunk.js.LICENSE.txt",
+    "static/media/ai.fd63ffc4.png": "/s-e1/face-detector/static/media/ai.fd63ffc4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6be3f5f6.js",
+    "static/css/2.31461e4f.chunk.css",
+    "static/js/2.923f0eb1.chunk.js",
+    "static/css/main.11f5540b.chunk.css",
+    "static/js/main.86842d00.chunk.js"
+  ]
+}

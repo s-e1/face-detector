@@ -14,7 +14,7 @@ function Register({ onRouteChange, loadUser }) {
         setPassword(event.target.value);
     }
     var onSubmitRegister = () => {
-        fetch('http://localhost:3001/register', {
+        fetch('https://face-detector-se.herokuapp.com/register', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, password })

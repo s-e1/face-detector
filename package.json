@@ -2,7 +2,7 @@
     "name": "face-detector",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://github.io/s-e1/face-detector",
+    "homepage": "https://s-e1.github.io/face-detector",
     "dependencies": {
         "@testing-library/jest-dom": "^5.11.8",
         "@testing-library/react": "^11.2.2",

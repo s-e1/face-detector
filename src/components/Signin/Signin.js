@@ -10,7 +10,8 @@ function Signin({ onRouteChange, loadUser }) {
         setPassword(event.target.value);
     }
     var onSubmitSignIn = () => {
-        fetch('https://face-detector-se.herokuapp.com/signin', {
+        // fetch('http://localhost:3001/signin', {
+            fetch('https://face-detector-se.herokuapp.com/signin', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

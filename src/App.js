@@ -34,7 +34,8 @@ function App() {
     })
 
     useEffect(() => {
-        fetch('https://face-detector-se.herokuapp.com')
+        // fetch('http://localhost:3001')
+            fetch('https://face-detector-se.herokuapp.com')
             .then(response => response.json())
             .then(console.log)
     }, [])
@@ -55,7 +56,8 @@ function App() {
     }
     var onPictureSubmit = () => {
         setUrl(input);
-        fetch('https://face-detector-se.herokuapp.com/imageurl', {
+        // fetch('http://localhost:3001/imageurl', {
+            fetch('https://face-detector-se.herokuapp.com/imageurl', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ input })
@@ -63,7 +65,8 @@ function App() {
             .then(response => response.json())
             .then(response => {
                 if (response) {
-                    fetch('https://face-detector-se.herokuapp.com/image', {
+                    // fetch('http://localhost:3001/image', {
+                        fetch('https://face-detector-se.herokuapp.com/image', {
                         method: 'put',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ id: user.id })
@@ -78,16 +81,26 @@ function App() {
     }
 
     var calculateBox = (data) => {
-        var clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
         var image = document.getElementById('imageInput');
-        var { top_row, left_col, bottom_row, right_col } = clarifaiFace;
         var { height, width } = image;
-        return {
-            topRow: top_row * height,
-            leftCol: left_col * width,
-            bottomRow: height - (bottom_row * height),
-            rightCol: width - (right_col * width)
-        }
+
+        // make array of face boxes
+        var imgList = data.outputs[0].data.regions;
+        var boxList = imgList.map(val => {
+            var id = val.id;
+            var imgBox = val.region_info.bounding_box;
+            var { top_row, left_col, bottom_row, right_col } = imgBox;
+
+            return {
+                id,
+                topRow: top_row * height,
+                leftCol: left_col * width,
+                bottomRow: height - (bottom_row * height),
+                rightCol: width - (right_col * width)
+            }
+        })
+
+        return boxList;
     }
     var initialState = () => {
         setInput('');
@@ -114,7 +127,7 @@ function App() {
                     <Logo />
                     <User name={user.name} entries={user.entries} />
                     <ImageLinkForm onInputChange={onInputChange} onPictureSubmit={onPictureSubmit} />
-                    <DisplayImage url={url} box={box} />
+                    <DisplayImage url={url} boxlist={box} />
                 </> :
                 (route === 'signin' ?
                     <Signin onRouteChange={onRouteChange} loadUser={loadUser} /> :

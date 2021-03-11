@@ -34,8 +34,8 @@ function App() {
     })
 
     useEffect(() => {
-        fetch('http://localhost:3001')
-            // fetch('https://face-detector-se.herokuapp.com')
+        // fetch('http://localhost:3001')
+            fetch('https://face-detector-se.herokuapp.com')
             .then(response => response.json())
             .then(console.log)
     }, [])
@@ -56,8 +56,8 @@ function App() {
     }
     var onPictureSubmit = () => {
         setUrl(input);
-        fetch('http://localhost:3001/imageurl', {
-            // fetch('https://face-detector-se.herokuapp.com/imageurl', {
+        // fetch('http://localhost:3001/imageurl', {
+            fetch('https://face-detector-se.herokuapp.com/imageurl', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ input })
@@ -65,8 +65,8 @@ function App() {
             .then(response => response.json())
             .then(response => {
                 if (response) {
-                    fetch('http://localhost:3001/image', {
-                        // fetch('https://face-detector-se.herokuapp.com/image', {
+                    // fetch('http://localhost:3001/image', {
+                        fetch('https://face-detector-se.herokuapp.com/image', {
                         method: 'put',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ id: user.id })
